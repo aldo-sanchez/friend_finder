@@ -36,22 +36,4 @@ module.exports = function(){
       });
     });
   }
-
-  // this.insertToUsers = function(array, cb){
-  //   var queryStr = 'INSERT INTO users(??) VALUES(?);';
-
-  //   connection.query(queryStr, array, function(err, data){
-  //     if(err){throw err};
-  //     cb();
-  //   })
-  // };
-
-  // this.insertToAnswers = function(array, cb){
-  //     var queryStr = 'INSERT INTO answers(??) VALUES((SELECT id FROM users WHERE name = ?),?);';
-
-  //   connection.query(queryStr, array, function(err, data){
-  //     if(err){throw err};
-  //     cb();
-  //   })
-  // };
 }
