@@ -1,8 +1,9 @@
 var connection = require('./../config/connection.js');
 
-function ORM(){
-  this.getAll = function(cb){
-    connection.query('SELECT * FROM users', function(err, data){
+module.exports = function(){
+  // getAll() joins two tables (inner) with and runs a callback
+  this.getAll = function(array, cb){
+    connection.query('SELECT ?? FROM ?? INNER JOIN ?? ON ?? = ??', array, function(err, data){
       if(err){throw err};
       cb(data);
     })
@@ -10,6 +11,4 @@ function ORM(){
   this.test = function(){
     console.log('we are in orm')
   }
-};
-
-module.exports = ORM;
+}
