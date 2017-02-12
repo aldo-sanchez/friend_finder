@@ -3,7 +3,6 @@ var ORM = require('./orm.js');
 
 var orm = new ORM();
 
-
 // export function to api friends
 module.exports = function(app){
   app.get('/api/friends', function(req, res){
@@ -23,9 +22,9 @@ module.exports = function(app){
   });
 
   app.post('/api/friends', function(req, res){
-    var usersArray = [['name', 'image'],['gatox berkely', 'pic4']];
+    var usersArray = [['name', 'image'],['gatoxxxxxxx', 'pic4']];
     var columns = ['user_id', ['ans1', 'ans2', 'ans3', 'ans4', 'ans5', 'ans6', 'ans7', 'ans8', 'ans9', 'ans10']];
-    var ansArray = [columns, 'gatox berkely',[1,2,3,4,5,6,7,8,9,10]];
+    var ansArray = [columns, 'gatoxxxxxxx',[1,2,3,4,5,6,7,8,9,10]];
 
     function cb(){
       res.end();
