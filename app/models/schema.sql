@@ -32,5 +32,8 @@ VALUES((SELECT id FROM users WHERE name = 'luisana'),2,4,3,5,1,2,3,3,5,1);
 
 SELECT * FROM answers
 
+INSERT INTO users(name, image) VALUES("melquiades", "pic3"); 
+INSERT INTO answers(user_id, ans1, ans2, ans3, ans4, ans5, ans6, ans7, ans8, ans9, ans10) 
+VALUES((SELECT id FROM users WHERE name = "melquiades"),2,4,3,5,5,5,2,2,3,2)
 
 
