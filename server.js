@@ -16,8 +16,8 @@ app.use(methodOverride('_method'));
 app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-require('./app/routes/apiRoutes.js')(app);
-require('./app/routes/htmlRoutes.js')(app);
+require('./app/controllers/apiRoutes.js')(app);
+require('./app/controllers/htmlRoutes.js')(app);
 
 app.listen(PORT, function(){
   console.log('listening on Port: ' + PORT);
