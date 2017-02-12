@@ -10,23 +10,48 @@ module.exports = function(){
   },
   this.test = function(){
     console.log('we are in orm')
+  };
+
+  this.insertData = function(usersArray, answersArray, cb){
+    connection.beginTransaction(function(err){
+      if(err){throw err};
+      connection.query('INSERT INTO users(??) VALUES(?);', usersArray, function(error, data){
+        if(error){
+          return connection.rollback(()=>{throw error;});
+        }
+      });
+
+      connection.query('INSERT INTO answers(??) VALUES((SELECT id FROM users WHERE name = ?),?);', answersArray, function(error, data){
+        if(error){
+          return connection.rollback(()=>{throw error});
+        }
+      });
+
+      connection.commit(function(err){
+        if(err){
+          return connection.rollback(()=>{throw err});
+        }
+        console.log('success!')
+        cb();
+      });
+    });
   }
 
-  this.insertToUsers = function(array, cb){
-    var queryStr = 'INSERT INTO users(??) VALUES(?);';
-    
-    connection.query(queryStr, array, function(err, data){
-      if(err){throw err};
-      cb();
-    })
-  }  
+  // this.insertToUsers = function(array, cb){
+  //   var queryStr = 'INSERT INTO users(??) VALUES(?);';
 
-  this.insertToAnswers = function(array, cb){
-      var queryStr = 'INSERT INTO answers(??) VALUES((SELECT id FROM users WHERE name = ?),?);';
+  //   connection.query(queryStr, array, function(err, data){
+  //     if(err){throw err};
+  //     cb();
+  //   })
+  // };
 
-    connection.query(queryStr, array, function(err, data){
-      if(err){throw err};
-      cb();
-    })
-  };
+  // this.insertToAnswers = function(array, cb){
+  //     var queryStr = 'INSERT INTO answers(??) VALUES((SELECT id FROM users WHERE name = ?),?);';
+
+  //   connection.query(queryStr, array, function(err, data){
+  //     if(err){throw err};
+  //     cb();
+  //   })
+  // };
 }

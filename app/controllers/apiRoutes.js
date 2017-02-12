@@ -23,19 +23,31 @@ module.exports = function(app){
   });
 
   app.post('/api/friends', function(req, res){
-    var userArray = [['name', 'image'],['melquiades', 'pic4']];
+    var usersArray = [['name', 'image'],['gatox', 'pic4']];
+    var columns = ['user_id', ['ans1', 'ans2', 'ans3', 'ans4', 'ans5', 'ans6', 'ans7', 'ans8', 'ans9', 'ans10']];
+    var ansArray = [columns, 'gatox',[1,2,3,4,5,6,7,8,9,10]];
 
     function cb(){
-      var columns = ['user_id', ['ans1', 'ans2', 'ans3', 'ans4', 'ans5', 'ans6', 'ans7', 'ans8', 'ans9', 'ans10']];
+      res.end();
+    }
 
-      var ansArray = [columns, 'melquiades',[1,2,3,4,5,6,7,8,9,10]];
-      function cb2(){
-        res.end();
-      };
-      
-      orm.insertToAnswers(ansArray, cb2)
-    };
+    orm.insertData(usersArray, ansArray, cb);
+  })
 
-    orm.insertToUsers(userArray, cb);
-  });
+  // app.post('/api/friends', function(req, res){
+  //   var userArray = [['name', 'image'],['melquiades', 'pic4']];
+
+  //   function cb(){
+  //     var columns = ['user_id', ['ans1', 'ans2', 'ans3', 'ans4', 'ans5', 'ans6', 'ans7', 'ans8', 'ans9', 'ans10']];
+
+  //     var ansArray = [columns, 'melquiades',[1,2,3,4,5,6,7,8,9,10]];
+  //     function cb2(){
+  //       res.end();
+  //     };
+
+  //     orm.insertToAnswers(ansArray, cb2)
+  //   };
+
+  //   orm.insertToUsers(userArray, cb);
+  // });
 }
