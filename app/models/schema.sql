@@ -24,4 +24,13 @@ CREATE TABLE answers(
     FOREIGN KEY(user_id) REFERENCES users(id)    
 );
 
+USE testHW;
+
+INSERT INTO users(name, image) VALUES('aldo','pic1');
+INSERT INTO answers(user_id, ans1, ans2, ans3, ans4, ans5, ans6, ans7, ans8, ans9, ans10)
+VALUES((SELECT id FROM users WHERE name = 'aldo'),1,5,3,2,4,5,2,3,4,3);
+
+SELECT * FROM answers
+
+
 
